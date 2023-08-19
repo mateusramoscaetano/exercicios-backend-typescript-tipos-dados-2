@@ -9,7 +9,7 @@ interface UserEditDto {
   address?: Address | null;
 }
 
-const findUserToEdit = (cpf: string): UserToRegister => {
+export const findUser = (cpf: string): UserToRegister => {
   const fileContent = readFromFile("./02/bd.json") as UserToRegister[];
   const userToEdit = fileContent.filter(
     (user: UserToRegister) => user.cpf === cpf
@@ -19,7 +19,7 @@ const findUserToEdit = (cpf: string): UserToRegister => {
 };
 
 const userDetail = (cpf: string): void => {
-  const user = findUserToEdit(cpf);
+  const user = findUser(cpf);
   console.log(user);
 };
 
