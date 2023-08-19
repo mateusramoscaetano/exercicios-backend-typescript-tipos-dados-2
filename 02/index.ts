@@ -1,7 +1,7 @@
 import { readFromFile } from "../01";
 import * as fs from "fs";
 
-interface Address {
+export interface Address {
   cep: string;
   street: string;
   complement?: string;
@@ -9,7 +9,7 @@ interface Address {
   city: string;
 }
 
-interface UserToRegister {
+export interface UserToRegister {
   name: string;
   email: string;
   cpf: string;
@@ -33,6 +33,12 @@ const example1 = {
   email: "m@a.com",
   cpf: "9999999999",
   job: "freelancer",
+  address: {
+    cep: "88888",
+    street: "rua",
+    district: "string",
+    city: "curitiba",
+  },
 };
 
 const example2 = {
