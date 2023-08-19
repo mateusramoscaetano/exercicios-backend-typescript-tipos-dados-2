@@ -1,13 +1,11 @@
 import * as fs from "fs";
 
-type JSONData = { [key: string]: string };
-
-const readFromFile = (filePath: string): JSONData => {
+export const readFromFile = (filePath: string): unknown => {
   const content = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(content);
 };
 
-const writeToFile = (filePath: string, data: JSONData): void => {
+export const writeToFile = (filePath: string, data: any): void => {
   const jsonData = JSON.stringify(data);
 
   fs.writeFileSync(filePath, jsonData);
@@ -15,9 +13,9 @@ const writeToFile = (filePath: string, data: JSONData): void => {
 
 const filePath = "01/bd.json";
 
-let fileContent = readFromFile(filePath);
+let fileContent = readFromFile(filePath) as string[];
 
-fileContent.example1 = "Example 2";
+fileContent.push("Example 2");
 
 writeToFile(filePath, fileContent);
 console.log("Escrita concluída.");
